@@ -17,28 +17,19 @@ Movie.prototype.price = function() {
     ticketGeneral = ticketGeneral - 2;
   }
   return ticketGeneral;
- }
+}
 
-
-  // } else if (this.title === "Titanic") {
-  //   ticketGeneral = ticketGeneral + 1;
-  //
-  // }
- // console.log("This is the cost of the movie: "ticketGeneral)
-
-
-// movies.prototype.receipt = function() {
-//   return this.title + this.times + this.age + this.price;
-// }
-
-
-
-
-
+Movie.prototype.times = function() {
+    if (this.times === "12") {
+      return "Matinee";
+    } else {
+      return "General Admission";
+    }
+  }
 
 
 $(document).ready(function() {
-  $("#project").submit(function(event){
+  $("#project").submit(function(event) {
     event.preventDefault();
 
     var inputTitles = $("#titles").val();
@@ -47,13 +38,11 @@ $(document).ready(function() {
 
     // console.log("From the user" + inputTimes);
     var newMovie = new Movie(inputTitles, inputTimes, inputAge);
+    // console.log(newMovie);
+    newMovie.price();
     var price = newMovie.price();
-    // console.log("From the object" + newMovie.title);
+    // var time = newMovie.times();
 
-    //to run the price prototypw, I need to call it on the newMovie object I just made:
-    //newMovie.price();
-
-    //var inputResults = calculate(inputTimes, inputTitles, inputAge );
     $("#output").append(price);
   });
 });
